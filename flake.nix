@@ -25,9 +25,8 @@
             php                         # For PHP
             bc                          # For arbitrary precision arithmetic in scripts
             curl                        # For sending HTTP requests
-            ghcWithPackages (pkgs: with pkgs; [
-              pkgs.network
-            ])
+            (haskell.packages.ghc94.ghcWithPackages (ps: [ ps.network ]))
+
           ];
         };
       };
