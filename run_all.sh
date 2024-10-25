@@ -51,11 +51,8 @@ interpreted_programs=(
 for item in "${interpreted_programs[@]}"; do
     # Split the item into interpreter and script path
     echo "Running $item"
-    interpreter=$(echo "$item" | awk '{print $1}')
-    script_path=$(echo "$item" | awk '{print $2}')
     working_dir=$(realpath .)
-    script_name=$(basename "$script_path")
-    command="$interpreter $script_name"
+    command="$item"
     elapsed_time=$(run_test "$working_dir" "$command")
     results+=("$elapsed_time $command")
     CURRENT_PORT=$((CURRENT_PORT+1))
