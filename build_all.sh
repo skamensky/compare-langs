@@ -37,9 +37,11 @@ mkdir -p bin
     mkdir -p bin/haskell
     cp server.hs ./bin/haskell
     cd ./bin/haskell
-    ghc server.hs -o server
+    ghc server.hs -o server > /dev/null
     rm server.hs
 )
 
 find ./bin/ -name "server" -type f | xargs chmod +x
+echo "File sizes:"
+echo ""
 du -sh ./bin/*

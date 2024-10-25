@@ -1,2 +1,5 @@
 bin/
 tmp*
+build_output.txt
+test_output.txt
+flake.lock
