@@ -16,6 +16,7 @@ In the future I'll add more languages and make the servers more realistic.
 - Perl
 - Node.js
 - PHP
+- Java
 
 ## Overview
 
