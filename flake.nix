@@ -17,7 +17,6 @@
             gcc                         # For C
             libgcc                         # For C++
             go                          # For Go
-            ghc                         # For Haskell
             rustc                       # For Rust
             python3                     # For Python
             ruby                        # For Ruby
@@ -26,7 +25,9 @@
             php                         # For PHP
             bc                          # For arbitrary precision arithmetic in scripts
             curl                        # For sending HTTP requests
-            haskellPackages.network
+            ghcWithPackages (pkgs: with pkgs; [
+              pkgs.network
+            ])
           ];
         };
       };
