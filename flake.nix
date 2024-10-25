@@ -26,6 +26,7 @@
             php                         # For PHP
             bc                          # For arbitrary precision arithmetic in scripts
             curl                        # For sending HTTP requests
+            haskellPackages.network
           ];
         };
       };
