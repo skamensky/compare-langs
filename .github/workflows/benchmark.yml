@@ -27,8 +27,6 @@ jobs:
         run: |
           # Enter nix develop shell and run the benchmarks
           nix develop --command bash ./.github/scripts/benchmarks.sh
-          '
-
       - name: Commit and push changes
         if: steps.build_and_run.outcome == 'success'
         uses: stefanzweifel/git-auto-commit-action@v4
