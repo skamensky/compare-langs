@@ -1,5 +1,8 @@
 name: Benchmark HTTP Servers
 
+permissions:
+  contents: write
+  
 on:
   push:
     branches: [ master ]
@@ -8,23 +11,42 @@ on:
 
 jobs:
   benchmark:
+    if: ${{ (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]')) || github.event_name != 'push' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
-      
+
       - name: Setup Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@main
-      
+
       - name: Build and run benchmarks
+        id: build_and_run
         run: |
           # Enter nix develop shell and run the benchmarks
           nix develop --command bash -c '
-            # Build all servers
-            ./build_all.sh
-            
-            # Run benchmarks
-            ./run_all.sh
+            # Build all servers and capture output
+            BUILD_OUTPUT=$(./build_all.sh)
+
+            # Run benchmarks and capture output
+            TEST_OUTPUT=$(./run_all.sh)
+
+            # Update README.md with the new outputs
+            # Use sed or any text processing tool to replace the content between the markers
+
+            # Escape backslashes and dollar signs in outputs for sed
+            ESCAPED_BUILD_OUTPUT=$(printf "%s" "$BUILD_OUTPUT" | sed -e 's/[\/&]/\\&/g' -e 's/$/\\n/' | tr -d '\n')
+            ESCAPED_TEST_OUTPUT=$(printf "%s" "$TEST_OUTPUT" | sed -e 's/[\/&]/\\&/g' -e 's/$/\\n/' | tr -d '\n')
+
+            sed -i "/<!-- BUILD_SCRIPT_OUTPUT_START -->/,/<!-- BUILD_SCRIPT_OUTPUT_END -->/c\\<!-- BUILD_SCRIPT_OUTPUT_START -->\n$BUILD_OUTPUT\n<!-- BUILD_SCRIPT_OUTPUT_END -->" README.md
+            sed -i "/<!-- TEST_SCRIPT_OUTPUT_START -->/,/<!-- TEST_SCRIPT_OUTPUT_END -->/c\\<!-- TEST_SCRIPT_OUTPUT_START -->\n$TEST_OUTPUT\n<!-- TEST_SCRIPT_OUTPUT_END -->" README.md
           '
+
+      - name: Commit and push changes
+        if: steps.build_and_run.outcome == 'success'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Update README with latest build and test outputs [skip ci]'
+          file_pattern: README.md
