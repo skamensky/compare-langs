@@ -1,0 +1,30 @@
+name: Benchmark HTTP Servers
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      
+      - name: Setup Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+      
+      - name: Build and run benchmarks
+        run: |
+          # Enter nix develop shell and run the benchmarks
+          nix develop --command bash -c '
+            # Build all servers
+            ./build_all.sh
+            
+            # Run benchmarks
+            ./run_all.sh
+          '
