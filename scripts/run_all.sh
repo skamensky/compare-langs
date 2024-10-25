@@ -7,12 +7,16 @@ server_pid=0
 # sometimes, so we just use a different port for each test
 CURRENT_PORT=3001
 results=()
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+src=$($SCRIPT_DIR/../src)
+bin=$($SCRIPT_DIR/../bin)
 
 run_test(){
     working_dir=$1
     command=$2
     cwd=$(realpath .)
-    run_test_script=$cwd/run_test.sh 
+    run_test_script=$cwd/scripts/run_test.sh 
     cd "$working_dir"
     export HTTP_SERVER_PORT=$CURRENT_PORT
     $command &> /dev/null &
@@ -30,7 +34,7 @@ run_test(){
 }
 
 # glob all the directories in bin
-mapfile -t all_executables < <(find ./bin/ -type f -name "server")
+mapfile -t all_executables < <(find $bin/ -type f -name "server")
 
 for command in "${all_executables[@]}"; do
     echo "Running $command"
@@ -40,12 +44,13 @@ for command in "${all_executables[@]}"; do
 done
 
 interpreted_programs=(
-    "python ./server.py"
-    "ruby ./server.rb"
-    "perl ./server.pl"
-    "node ./server.js"
-    "php ./server.php"
-    "java -cp ./bin/java Server"
+    "python $src/server.py"
+    # relative path to the script:
+    "ruby $src/server.rb"
+    "perl $src/server.pl"
+    "node $src/server.js"
+    "php $src/server.php"
+    "java -cp $bin/java Server"
 )
 
 for item in "${interpreted_programs[@]}"; do
