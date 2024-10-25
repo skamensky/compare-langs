@@ -18,6 +18,17 @@ In the future I'll add more languages and make the servers more realistic.
 - PHP
 - Java
 
+TODO:
+- C#
+- Swift
+- Kotlin
+- Scala
+- Lua
+- R
+- Shell
+- Tcl
+
+
 ## Overview
 
 Each server listens on a specified port and responds with a simple "Hello, World!" message to incoming HTTP requests. The servers are benchmarked by sending a thousand requests in parallel and measuring the time taken to process them.
