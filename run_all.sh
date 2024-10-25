@@ -45,6 +45,7 @@ interpreted_programs=(
     "perl ./server.pl"
     "node ./server.js"
     "php ./server.php"
+    "java -cp ./bin/java Server"
 )
 
 for item in "${interpreted_programs[@]}"; do

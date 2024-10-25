@@ -26,7 +26,7 @@
             bc                          # For arbitrary precision arithmetic in scripts
             curl                        # For sending HTTP requests
             (haskell.packages.ghc94.ghcWithPackages (ps: [ ps.network ]))
-
+            jdk22
           ];
         };
       };

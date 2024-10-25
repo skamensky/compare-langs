@@ -41,6 +41,14 @@ mkdir -p bin
     rm server.hs
 )
 
+(
+    mkdir -p bin/java
+    cp Server.java ./bin/java
+    cd ./bin/java
+    javac Server.java
+    rm Server.java
+)
+
 find ./bin/ -name "server" -type f | xargs chmod +x
 echo "File sizes:"
 echo ""
