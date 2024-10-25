@@ -89,6 +89,7 @@ File sizes:
 24K	./bin/cpp
 3.0M	./bin/go
 1.4M	./bin/haskell
+8.0K	./bin/java
 532K	./bin/rust
 
 ```
@@ -107,18 +108,20 @@ Running ruby ./server.rb
 Running perl ./server.pl
 Running node ./server.js
 Running php ./server.php
+Running java -cp ./bin/java Server
 
 Elapsed times (fastest to longest):
-./bin/cpp/server: 1.63 seconds
-python server.py: 1.64 seconds
-./bin/rust/server: 1.65 seconds
-./bin/go/server: 1.66 seconds
-ruby server.rb: 1.66 seconds
-perl server.pl: 1.67 seconds
-./bin/c/server: 1.70 seconds
-node server.js: 1.78 seconds
-php server.php: 2.38 seconds
-./bin/haskell/server: 2.53 seconds
+./bin/cpp/server: 1.66 seconds
+python ./server.py: 1.68 seconds
+./bin/c/server: 1.69 seconds
+./bin/go/server: 1.69 seconds
+./bin/rust/server: 1.69 seconds
+java -cp ./bin/java Server: 1.70 seconds
+ruby ./server.rb: 1.70 seconds
+perl ./server.pl: 1.73 seconds
+node ./server.js: 1.85 seconds
+php ./server.php: 2.62 seconds
+./bin/haskell/server: 2.67 seconds
 
 ```
 <!-- TEST_SCRIPT_OUTPUT_END -->
