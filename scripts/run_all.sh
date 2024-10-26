@@ -9,8 +9,8 @@ CURRENT_PORT=3001
 results=()
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-src=$($SCRIPT_DIR/../src)
-bin=$($SCRIPT_DIR/../bin)
+src=$(realpath -s --relative-to=$SCRIPT_DIR ../src)
+bin=$(realpath -s --relative-to=$SCRIPT_DIR ../bin)
 
 run_test(){
     working_dir=$1
