@@ -98,20 +98,30 @@ File sizes:
 # Output of test script (updated with every build):
 <!-- TEST_SCRIPT_OUTPUT_START -->
 ```
-Running python ../../src/server.py
-Running ruby ../../src/server.rb
-Running perl ../../src/server.pl
-Running node ../../src/server.js
-Running php ../../src/server.php
-Running java -cp ../../bin/java Server
+Running bin/go/server
+Running bin/c/server
+Running bin/haskell/server
+Running bin/cpp/server
+Running bin/rust/server
+Running python src/server.py
+Running ruby src/server.rb
+Running perl src/server.pl
+Running node src/server.js
+Running php src/server.php
+Running java -cp bin/java Server
 
 Elapsed times (fastest to longest):
-perl ../../src/server.pl: 1.59 seconds
-python ../../src/server.py: 1.59 seconds
-ruby ../../src/server.rb: 1.59 seconds
-java -cp ../../bin/java Server: 1.60 seconds
-php ../../src/server.php: 1.60 seconds
-node ../../src/server.js: 1.61 seconds
+python src/server.py: 1.66 seconds
+bin/rust/server: 1.67 seconds
+php src/server.php: 1.67 seconds
+java -cp bin/java Server: 1.68 seconds
+ruby src/server.rb: 1.68 seconds
+perl src/server.pl: 1.70 seconds
+bin/cpp/server: 1.73 seconds
+bin/go/server: 1.74 seconds
+node src/server.js: 1.81 seconds
+bin/haskell/server: 2.65 seconds
+bin/c/server: 2.73 seconds
 
 ```
 <!-- TEST_SCRIPT_OUTPUT_END -->
