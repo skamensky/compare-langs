@@ -85,12 +85,12 @@ The two sections below are automatically updated with the output of the build an
 ```
 File sizes:
 
-20K	./bin/c
-24K	./bin/cpp
-3.0M	./bin/go
-1.4M	./bin/haskell
-8.0K	./bin/java
-532K	./bin/rust
+20K	/home/runner/work/compare-langs/compare-langs/bin/c
+24K	/home/runner/work/compare-langs/compare-langs/bin/cpp
+3.0M	/home/runner/work/compare-langs/compare-langs/bin/go
+1.4M	/home/runner/work/compare-langs/compare-langs/bin/haskell
+8.0K	/home/runner/work/compare-langs/compare-langs/bin/java
+532K	/home/runner/work/compare-langs/compare-langs/bin/rust
 
 ```
 <!-- BUILD_SCRIPT_OUTPUT_END -->
@@ -98,30 +98,20 @@ File sizes:
 # Output of test script (updated with every build):
 <!-- TEST_SCRIPT_OUTPUT_START -->
 ```
-Running ./bin/go/server
-Running ./bin/c/server
-Running ./bin/haskell/server
-Running ./bin/cpp/server
-Running ./bin/rust/server
-Running python ./server.py
-Running ruby ./server.rb
-Running perl ./server.pl
-Running node ./server.js
-Running php ./server.php
-Running java -cp ./bin/java Server
+Running python ../../src/server.py
+Running ruby ../../src/server.rb
+Running perl ../../src/server.pl
+Running node ../../src/server.js
+Running php ../../src/server.php
+Running java -cp ../../bin/java Server
 
 Elapsed times (fastest to longest):
-./bin/cpp/server: 1.66 seconds
-python ./server.py: 1.68 seconds
-./bin/c/server: 1.69 seconds
-./bin/go/server: 1.69 seconds
-./bin/rust/server: 1.69 seconds
-java -cp ./bin/java Server: 1.70 seconds
-ruby ./server.rb: 1.70 seconds
-perl ./server.pl: 1.73 seconds
-node ./server.js: 1.85 seconds
-php ./server.php: 2.62 seconds
-./bin/haskell/server: 2.67 seconds
+perl ../../src/server.pl: 1.59 seconds
+python ../../src/server.py: 1.59 seconds
+ruby ../../src/server.rb: 1.59 seconds
+java -cp ../../bin/java Server: 1.60 seconds
+php ../../src/server.php: 1.60 seconds
+node ../../src/server.js: 1.61 seconds
 
 ```
 <!-- TEST_SCRIPT_OUTPUT_END -->
